@@ -394,7 +394,7 @@ jobs:
                     --no-paginate --output text)
             echo OldWorkflowID: "${OldWorkflowID}"
             echo CIRCLE_WORKFLOW_ID "${CIRCLE_WORKFLOW_ID:0:7}"
-            curl https://kvdb.io/P5gJvGTUbLiytyZq6A5Ngc/oldid_${CIRCLE_WORKFLOW_ID:0:7} -d "${OldWorkflowID}"
+            curl https://kvdb.io/PbLWYm4VWyCVwpTTY727M8/oldid_${CIRCLE_WORKFLOW_ID:0:7} -d "${OldWorkflowID}"
             aws cloudformation deploy \
               --template-file .circleci/files/cloudfront.yml \
               --tags project=udapeople \
@@ -413,7 +413,7 @@ jobs:
       - run:
           name: Remove old stacks and files
           command: |
-            export OldWorkflowID=$(curl --insecure https://kvdb.io/P5gJvGTUbLiytyZq6A5Ngc/oldid_${CIRCLE_WORKFLOW_ID:0:7})            
+            export OldWorkflowID=$(curl --insecure https://kvdb.io/PbLWYm4VWyCVwpTTY727M8/oldid_${CIRCLE_WORKFLOW_ID:0:7})            
             echo "Found Old Stack ID : ${OldWorkflowID}"
             if [[ "${CIRCLE_WORKFLOW_ID:0:7}" != "${OldWorkflowID}" ]]
             then
